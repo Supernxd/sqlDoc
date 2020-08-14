@@ -1,0 +1,22 @@
+{
+  "name": "sqldoc",
+  "version": "1.0.0",
+  "description": "ELECTRON登录生成数据库文档",
+  "main": "main.js",
+  "scripts": {
+    "test": "node test/mysql.test && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Supernxd/sqlDoc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Supernxd/sqlDoc/issues"
+  },
+  "homepage": "https://github.com/Supernxd/sqlDoc#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}

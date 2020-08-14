@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My-App</title>
+  <link rel="import" href="static/components/mysqlTable.html" id="my-app" /> 
+  <link rel="stylesheet" href="./static/src/default/style.min.css" />   
+  <script type="text/javascript" src="./static/src/jquery.3.5.1.min.js"></script>
+  <script type="text/javascript" src="./static/src/jstree.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      height: 100%;
+      display: flex;
+    }
+    .content {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+    }
+    .nav {
+      width: 340px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      color: var(--color-subtle);
+      border-right: 1px solid var(--color-border);
+      background-color: var(--color-bg);
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div id="left" ></div>
+  </div>
+  <div style="overflow: auto;">
+    <div id='content' >
+      <input type="button" onclick="addView();" value="添加" />
+    </div>
+  </div>
+  <script>
+    function addView() {
+      const node = document.createElement('my-app')
+      node.innerHTML = `<table slot='colTable' rules='all' frame='box'>
+        <th>列名</th>
+        <th>主键</th>
+        <th>数据类型</th>
+        <th>字段类型</th>
+        <th>长度</th>
+        <th>额外信息</th>
+        <th>是否为空</th>
+        <th>默认值</th>
+        <th>备注</th>
+      </table>`
+      document.getElementById('content').append(node)
+    }
+  </script>
+  <!-- <script type="text/javascript">
+    require('./renderer-process/sqlInfo')
+  </script> -->
+  <script type="text/javascript" src="./renderer-process/sqlInfo.js"></script>
+</body>
+</html>

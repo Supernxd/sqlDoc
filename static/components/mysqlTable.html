@@ -1,0 +1,46 @@
+<template>
+    <style>
+        .card {
+          font-size: 12px;
+        }
+        p {
+          font-size: 14px;
+          font-weight: bolder;
+        }
+        span {
+          font-size: 12px;
+          font-weight: normal;
+        }
+    </style>
+    <div class="card" draggable="true">
+      <p>表名: <slot name='tableName'></slot></p>
+      <p>注释: <slot name='remark'></slot></p>
+      <p>数据列:</p>
+      <slot name='colTable'></slot>
+    </div>
+</template>
+
+<script>
+    function drag(e)
+    {
+      // ev.dataTransfer.setData("Text",ev.target.id);
+    }
+
+    function drop(e)
+    {
+      e.preventDefault();
+    }
+    class MySqlCard extends HTMLElement {
+        constructor() {
+            super();
+            const shadowRoot = this.attachShadow({mode:'open'});
+            const myApp = document.getElementById('my-app').import;
+            const templateNode = myApp.getElementsByTagName('template')[0].content.cloneNode(true);
+            shadowRoot.appendChild(templateNode);
+        }
+        connectedCallback() {
+            console.log('my-app element is connected');
+        }
+    }
+    customElements.define('my-app', MySqlCard);
+</script>
